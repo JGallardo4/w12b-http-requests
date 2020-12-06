@@ -34,6 +34,14 @@
   line-height: 2rem;
 }
 
+#new-post-form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  padding: 0.5rem;
+}
+
 /* Other Style */
 /* Fonts */
 /*# sourceMappingURL=main.css.map */
