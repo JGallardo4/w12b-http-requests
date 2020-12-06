@@ -1,11 +1,37 @@
 /* Reset */
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		list-style: none;
-	}
-	
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+
 /* Layout */
+
+#posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    .post {
+        display: grid;
+        gap: 0.5rem;
+        border-radius: 5px;
+        background-color: #001F3F;
+        color: white;
+        padding: 0.5rem;
+        .post-action {
+            font-size: large;
+            line-height: 2rem;
+        }
+    }
+}
+
+
 /* Other Style */
+
+
 /* Fonts */

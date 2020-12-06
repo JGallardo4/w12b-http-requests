@@ -1,0 +1,39 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+}
+
+/* Layout */
+#posts {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+#posts .post {
+  display: -ms-grid;
+  display: grid;
+  gap: 0.5rem;
+  border-radius: 5px;
+  background-color: #001F3F;
+  color: white;
+  padding: 0.5rem;
+}
+
+#posts .post .post-action {
+  font-size: large;
+  line-height: 2rem;
+}
+
+/* Other Style */
+/* Fonts */
+/*# sourceMappingURL=main.css.map */
