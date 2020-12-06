@@ -20,6 +20,9 @@ function addPosts(posts, container) {
         edit_icon.classList.add("fa-edit");
         edit_icon.ariaHidden = "true";
         edit_button.appendChild(edit_icon);
+        edit_button.addEventListener("click", () => {
+            editPost(p);
+        });
         post.appendChild(edit_button);
 
         var title = document.createElement("h1");
@@ -32,6 +35,14 @@ function addPosts(posts, container) {
 
         container.appendChild(post);
     });
+}
+
+function editPost(post) {
+    Cookies.set("editPost", JSON.stringify(post), {
+        sameSite: "none",
+        secure: true
+    });
+    window.location.href = "/edit.html";
 }
 
 export {

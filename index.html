@@ -7,6 +7,8 @@
     <title></title>
     <link rel="stylesheet" href="css/main.css" />
     <script src="https://kit.fontawesome.com/df3d0cc377.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
 </head>
 
 <body>
@@ -18,12 +20,12 @@
                 <fieldset id="new-post-form">
                     <legend>Create a new post</legend>
                     <label for="post-title-input">Title:</label>
-                    <input type="text" name="post-title-input"><br>
+                    <input id="post-title-input" type="text" name="post-title-input"><br>
 
                     <label for="post-body-input">
 						Post:
 					</label><br>
-                    <textarea name="post-body-input" id="" cols="30" rows="10"></textarea><br>
+                    <textarea id="post-body-input" name="post-body-input" id="" cols="30" rows="10"></textarea><br>
 
                     <button type="reset" name="reset-button">Reset</button>
 
