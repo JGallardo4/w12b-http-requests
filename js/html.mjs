@@ -1,5 +1,5 @@
 function addPosts(posts, container) {
-    Array.from(posts).forEach((p) => {
+    posts.forEach((p) => {
         var post = document.createElement("article");
         post.classList.add("post");
         post.id = p.id;
