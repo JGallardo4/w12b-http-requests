@@ -22,9 +22,7 @@ class Blog {
                 this.post_array = Array.from(post_objs);
                 return this.post_array;
             })
-            .catch(error => {
-
-            });
+            .catch(console.log);
     }
 
     editPostGET(post_id, new_post) {
