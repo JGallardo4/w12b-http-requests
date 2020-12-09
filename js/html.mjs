@@ -1,5 +1,3 @@
-import { blog } from "./app.js";
-
 function addPosts(posts, blog, container, notifier) {
     posts.forEach((p) => {
         var post = document.createElement("article");
@@ -46,43 +44,8 @@ function addPosts(posts, blog, container, notifier) {
         body.innerText = p.body;
         post.appendChild(body);
 
-        var comments_container = document.createElement("section");
-        comments_container.classList.add("post-comments");
-        createComments(p.id, comments_container);
-        post.appendChild(comments_container);
-
         container.appendChild(post);
     });
-}
-
-async function createComments(post_id, container) {
-    var section_title = document.createElement("h2");
-    section_title.classList.add("comment-section-title");
-    section_title.innerText = "Comments";
-    container.appendChild(section_title);
-
-    await blog.getComments(post_id)
-        .then(comments => comments.forEach((comment) => {
-            var comment_element = document.createElement("article");
-            comment_element.classList.add("post-comment");
-
-            var user = document.createElement("h2");
-            user.classList.add("comment-user");
-            user.innerText = comment.name;
-            comment_element.appendChild(user);
-
-            var email = document.createElement("h2");
-            email.classList.add("comment-email");
-            email.innerText = comment.email;
-            comment_element.appendChild(email);
-
-            var body = document.createElement("p");
-            body.classList.add("comment-body");
-            body.innerText = comment.body;
-            comment_element.appendChild(body);
-
-            container.appendChild(comment_element);
-        }));
 }
 
 function getPostInput() {

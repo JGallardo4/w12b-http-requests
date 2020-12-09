@@ -77,11 +77,6 @@ class Blog {
             method: 'DELETE',
         });
     }
-
-    getComments(post_id) {
-        return fetch(this.url + post_id + "/comments")
-            .then((response) => response.json());
-    }
 }
 
 export {
