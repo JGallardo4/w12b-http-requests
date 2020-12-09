@@ -56,7 +56,23 @@ class Blog {
     }
 
     editPostSET(post_id, new_post) {
-
+        console.log(new_post);
+        fetch(`${this.url}/posts/${post_id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    id: post_id,
+                    title: new_post.title,
+                    body: new_post.body,
+                    userId: 1,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                }
+            })
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            .then(() => window.location.href = "/index.html")
+            .catch(console.log);
     }
 
     deletePost(post_id) {

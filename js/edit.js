@@ -17,7 +17,8 @@ async function initForm() {
     body.innerText = edit_post.body;
 
     let submit_button = document.getElementById("submit-button");
-    submit_button.addEventListener("click", () => {
+    submit_button.addEventListener("click", (event) => {
+        event.preventDefault();
         blog.editPostSET(edit_post_id, getPostInput());
     });
 
