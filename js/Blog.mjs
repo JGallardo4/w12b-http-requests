@@ -1,14 +1,16 @@
 class Blog {
     url;
     post_array = null;
+    notifier;
 
-    constructor(url) {
+    constructor(url, notifier) {
         this.url = url;
         this.posts = this.getPosts();
+        this.notifier = notifier;
     }
 
-    addPost(new_post) {
-        fetch(`${this.url}/posts`, {
+    async addPost(new_post) {
+        fetch(this.url, {
                 method: 'POST',
                 body: JSON.stringify({
                     title: new_post.title,
@@ -26,7 +28,7 @@ class Blog {
 
     getPosts() {
         return this.post_array ? this.post_array :
-            fetch(`${this.url}/posts`)
+            fetch(this.url)
             .then(response => {
                 return response;
             })
@@ -39,7 +41,7 @@ class Blog {
     }
 
     async getPost(post_id) {
-        return await fetch(`${this.url}/posts/${post_id}`)
+        return await fetch(this.url + post_id)
             .then((response) => {
                 if (response.status == 200) {
                     return response.json();
@@ -49,21 +51,13 @@ class Blog {
             });
     }
 
-    editPostGET(post_id) {
-        Cookies.set("editPostId", post_id, { sameSite: "strict" });
-
-        window.location.href = "/edit.html";
-    }
-
-    editPostSET(post_id, new_post) {
+    editPost(post_id, new_post) {
         console.log(new_post);
-        fetch(`${this.url}/posts/${post_id}`, {
-                method: 'PUT',
+        fetch(this.url + post_id, {
+                method: 'PATCH',
                 body: JSON.stringify({
-                    id: post_id,
                     title: new_post.title,
-                    body: new_post.body,
-                    userId: 1,
+                    body: new_post.body
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
@@ -76,7 +70,9 @@ class Blog {
     }
 
     deletePost(post_id) {
-
+        return fetch(this.url + post_id, {
+            method: 'DELETE',
+        });
     }
 }
 
