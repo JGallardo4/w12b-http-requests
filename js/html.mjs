@@ -1,4 +1,4 @@
-function addPosts(posts, container) {
+function addPosts(posts, blog, container) {
     posts.forEach((p) => {
         var post = document.createElement("article");
         post.classList.add("post");
@@ -6,6 +6,11 @@ function addPosts(posts, container) {
 
         var delete_button = document.createElement("button");
         delete_button.classList.add("post-action");
+        delete_button.classList.add("delete-button");
+        delete_button.value = p.id;
+        delete_button.addEventListener("click", () =>
+            blog.deletePost(this.value)
+        );
         var delete_icon = document.createElement("i");
         delete_icon.classList.add("fa");
         delete_icon.classList.add("fa-window-close");
@@ -15,34 +20,29 @@ function addPosts(posts, container) {
 
         var edit_button = document.createElement("button");
         edit_button.classList.add("post-action");
+        edit_button.classList.add("edit-button");
         var edit_icon = document.createElement("i");
         edit_icon.classList.add("fa");
         edit_icon.classList.add("fa-edit");
         edit_icon.ariaHidden = "true";
         edit_button.appendChild(edit_icon);
         edit_button.addEventListener("click", () => {
-            editPost(p);
+            blog.editPostGET(p);
         });
         post.appendChild(edit_button);
 
         var title = document.createElement("h1");
+        title.classList.add("post-title");
         title.innerText = p.title;
         post.appendChild(title);
 
         var body = document.createElement("p");
+        body.classList.add("post-body");
         body.innerText = p.body;
         post.appendChild(body);
 
         container.appendChild(post);
     });
-}
-
-function editPost(post) {
-    Cookies.set("editPost", JSON.stringify(post), {
-        sameSite: "none",
-        secure: true
-    });
-    window.location.href = "/edit.html";
 }
 
 export {

@@ -30,6 +30,29 @@
     }
 }
 
+@media (min-width: 500px) {
+    .post {
+        grid-template-columns: 1fr auto auto;
+        grid-template-rows: auto 1fr;
+        .post-title {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .edit-button {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .delete-button {
+            grid-column: 3;
+            grid-row: 1;
+        }
+        .post-body {
+            grid-column: 1 / 4;
+            grid-row: 2;
+        }
+    }
+}
+
 
 /* Other Style */
 

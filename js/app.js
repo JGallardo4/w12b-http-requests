@@ -5,4 +5,4 @@ import { addPosts } from "./html.mjs";
 let posts_container = document.getElementById("posts");
 let blog = new Blog("https://jsonplaceholder.typicode.com")
 blog.getPosts()
-    .then(posts => addPosts(posts, posts_container));
+    .then(posts => addPosts(posts, blog, posts_container));
