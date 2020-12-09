@@ -27,7 +27,7 @@ function addPosts(posts, blog, container) {
         edit_icon.ariaHidden = "true";
         edit_button.appendChild(edit_icon);
         edit_button.addEventListener("click", () => {
-            blog.editPostGET(p);
+            blog.editPostGET(p.id);
         });
         post.appendChild(edit_button);
 
@@ -45,6 +45,18 @@ function addPosts(posts, blog, container) {
     });
 }
 
+function getPostInput() {
+    var post_title_input = document.getElementById("post-title-input").value;
+    var post_body_input = document.getElementById("post-body-input").value;
+
+    return {
+        title: post_body_input,
+        body: post_body_input
+    };
+}
+
+
 export {
-    addPosts
+    addPosts,
+    getPostInput
 };

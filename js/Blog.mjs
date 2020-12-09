@@ -38,29 +38,24 @@ class Blog {
             .catch(console.log);
     }
 
-    editPostGET(post_id, new_post) {
-        Cookies.set("editPost", JSON.stringify(post), {
-            sameSite: "none",
-            secure: true
-        });
+    async getPost(post_id) {
+        return await fetch(`${this.url}/posts/${post_id}`)
+            .then((response) => {
+                if (response.status == 200) {
+                    return response.json();
+                } else {
+                    console.log("nay");
+                }
+            });
+    }
+
+    editPostGET(post_id) {
+        Cookies.set("editPostId", post_id, { sameSite: "strict" });
+
         window.location.href = "/edit.html";
     }
 
     editPostSET(post_id, new_post) {
-        fetch('https://jsonplaceholder.typicode.com/posts/1', {
-                method: 'PUT',
-                body: JSON.stringify({
-                    id: 1,
-                    title: 'foo',
-                    body: 'bar',
-                    userId: 1,
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-            .then((response) => response.json())
-            .then((json) => console.log(json))
 
     }
 

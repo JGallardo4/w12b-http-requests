@@ -1,18 +1,31 @@
-let post = JSON.parse(Cookies.get("editPost"));
+import {
+    Blog
+} from "./Blog.mjs";
 
-let title = document.getElementById("post-title-input");
-title.value = post.title;
+import { addPosts, getPostInput } from "./html.mjs";
 
-let body = document.getElementById("post-body-input");
-body.innerText = post.body;
+const blog = new Blog("https://jsonplaceholder.typicode.com");
 
-let submit_button = document.getElementById("submit-button");
-submit_button.addEventListener("click", () => {
+async function initForm() {
+    let edit_post_id = JSON.parse(Cookies.get("editPostId"));
+    let edit_post = await blog.getPost(edit_post_id);
 
-});
+    let title = document.getElementById("post-title-input");
+    title.value = edit_post.title;
 
-let cancel_button = document.getElementById("cancel-button");
-cancel_button.addEventListener("click", (event) => {
-    event.preventDefault();
-    window.location.href = "/index.html";
-});
+    let body = document.getElementById("post-body-input");
+    body.innerText = edit_post.body;
+
+    let submit_button = document.getElementById("submit-button");
+    submit_button.addEventListener("click", () => {
+        blog.editPostSET(edit_post_id, getPostInput());
+    });
+
+    let cancel_button = document.getElementById("cancel-button");
+    cancel_button.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = "./index.html";
+    });
+}
+
+initForm();
