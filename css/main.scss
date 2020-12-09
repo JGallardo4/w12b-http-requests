@@ -50,6 +50,16 @@
             grid-column: 1 / 4;
             grid-row: 2;
         }
+        .post-comments {
+            background-color: white;
+            color: black;
+            text-align: center;
+            font-size: small;
+            padding-bottom: 2rem;
+            .comment-section-title {
+                text-align: right;
+            }
+        }
     }
 }
 
