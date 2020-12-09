@@ -10,7 +10,7 @@ class Blog {
     }
 
     async addPost(new_post) {
-        fetch(this.url, {
+        return fetch(this.url, {
                 method: 'POST',
                 body: JSON.stringify({
                     title: new_post.title,
@@ -52,8 +52,7 @@ class Blog {
     }
 
     editPost(post_id, new_post) {
-        console.log(new_post);
-        fetch(this.url + post_id, {
+        return fetch(this.url + post_id, {
                 method: 'PATCH',
                 body: JSON.stringify({
                     title: new_post.title,
@@ -65,7 +64,11 @@ class Blog {
             })
             .then((response) => response.json())
             .then((json) => console.log(json))
-            .then(() => window.location.href = "/index.html")
+            .then(() => {
+                setTimeout(() =>
+                    window.location.href = "/index.html",
+                    5000);
+            })
             .catch(console.log);
     }
 

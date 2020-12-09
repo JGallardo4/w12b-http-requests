@@ -4,7 +4,8 @@ import {
 
 import { addPosts, getPostInput } from "./html.mjs";
 
-const blog = new Blog("https://jsonplaceholder.typicode.com/posts/");
+const notifier = new AWN();
+const blog = new Blog("https://jsonplaceholder.typicode.com/posts/", notifier);
 
 async function initForm() {
     let edit_post_id = JSON.parse(Cookies.get("editPostId"));
@@ -19,7 +20,7 @@ async function initForm() {
     let submit_button = document.getElementById("submit-button");
     submit_button.addEventListener("click", (event) => {
         event.preventDefault();
-        blog.editPost(edit_post_id, getPostInput());
+        notifier.async(blog.editPost(edit_post_id, getPostInput()), "Post was edited");
     });
 
     let cancel_button = document.getElementById("cancel-button");

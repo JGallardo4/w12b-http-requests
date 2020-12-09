@@ -14,7 +14,7 @@ let create_submit_button = document.getElementById("create-submit-button");
 create_submit_button.addEventListener("click", (event) => {
     event.preventDefault();
 
-    blog.addPost(getPostInput());
+    notifier.async(blog.addPost(getPostInput()), "New post has been created");
     clearPostInput();
 });
 
